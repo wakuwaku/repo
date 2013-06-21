@@ -1,0 +1,63 @@
+" This vimrc file uses vundle to auto install the plugins, get it via:
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" Use :BundleInstall or BundleList to install
+" =========================================
+set nocompatible
+set bs=2
+set number
+filetype off
+" map <leader> 
+let mapleader = ","
+
+" tabs move to
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"*** let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+"*** The bundles you install will be listed here
+ 
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'scrooloose/nerdtree'
+Bundle 'klen/python-mode'
+
+filetype plugin indent on
+
+"*** The rest of your config follows here
+
+"Color scheme
+" mkdir -p ~/.vim/colors && cd ~/.vim/colors
+" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+
+colorscheme wombat256mod
+set t_Co=256
+syntax on
+
+augroup vimrc_autocmds
+	autocmd!	
+	" highlight characters past column 120
+	autocmd FileType python highlight Excess ctermbg=DarkGrey guibg=Black
+	autocmd FileType python match Excess /\%120v.*/
+	autocmd FileType python set nowrap
+augroup END
+
+"** Powerline setup
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 12
+set laststatus=2
+
+"**NerdTree setup
+"** F2 key to activate
+map <F2> :NERDTreeToggle<CR>
+
+" Settings for jedi-vim
+" cd ~/.vim/bundle
+" git clone git://github.com/davidhalter/jedi-vim.git
+let g:jedi#related_names_command = "<leader>z"
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
