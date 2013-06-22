@@ -24,7 +24,8 @@ Bundle 'gmarik/vundle'
  
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'scrooloose/nerdtree'
-Bundle 'klen/python-mode'
+" Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
 
 filetype plugin indent on
 
@@ -58,7 +59,7 @@ map <F2> :NERDTreeToggle<CR>
 " cd ~/.vim/bundle
 " git clone git://github.com/davidhalter/jedi-vim.git
 let g:jedi#related_names_command = "<leader>z"
-let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 1
 let g:jedi#popup_select_first = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
